@@ -1,0 +1,72 @@
+:root {
+  --yale-blue: #00356b;
+  --yale-blue-dark: #00264d;
+  --yale-blue-light: #e8eef5;
+  --yale-gold: #f1c400;
+  --cream: #faf6ec;
+  --white: #ffffff;
+  --light-gray: #f3f4f6;
+  --ink: #1a1d23;
+
+  --font-heading: 'Oswald', 'Segoe UI', system-ui, sans-serif;
+  --font-body: 'Inter', 'Segoe UI', system-ui, sans-serif;
+
+  font-family: var(--font-body);
+  color-scheme: light;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--cream);
+  color: var(--ink);
+  /* Brand touch: a small paw print in place of the default arrow over
+     plain page areas. Colors are hardcoded hex (not var(--yale-blue))
+     because this is a separate data-URI string, not live CSS, so a CSS
+     variable can't resolve inside it. Elements with their own cursor
+     (buttons, links) are unaffected — this only sets the body default. */
+  cursor:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 36 36'%3E%3Ccircle cx='18' cy='24' r='8' fill='%2300356b'/%3E%3Ccircle cx='8' cy='12' r='4' fill='%2300356b'/%3E%3Ccircle cx='16' cy='6' r='4' fill='%2300356b'/%3E%3Ccircle cx='24' cy='6' r='4' fill='%2300356b'/%3E%3Ccircle cx='30' cy='12' r='4' fill='%2300356b'/%3E%3C/svg%3E")
+      12 12,
+    auto;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-heading);
+  letter-spacing: 0.01em;
+}
+
+a {
+  color: inherit;
+}
+
+.app-shell {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.app-content {
+  flex: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

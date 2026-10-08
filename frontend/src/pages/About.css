@@ -1,0 +1,36 @@
+.about {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 3rem 1.5rem 4rem;
+}
+
+.about__hero {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.about__hero h1 {
+  color: var(--yale-blue);
+  font-size: 2rem;
+  margin-bottom: 0.75rem;
+}
+
+.about__hero p {
+  color: #444;
+  font-size: 1.05rem;
+}
+
+.about__section {
+  margin-bottom: 2rem;
+}
+
+.about__section h2 {
+  color: var(--yale-blue);
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+
+.about__section p {
+  color: #555;
+  line-height: 1.6;
+}

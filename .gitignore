@@ -1,0 +1,26 @@
+# Secrets — never commit real credentials
+.env
+
+# Data pack — the real database and product photos are not committed;
+# see README.md for how to place them locally after cloning.
+data/campus_customs.db
+data/products/
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Node / frontend
+frontend/node_modules/
+frontend/dist/
+frontend/.vite/
+*.log
+npm-debug.log*
+
+# Editors / OS
+.vscode/*
+!.vscode/extensions.json
+.idea/
+.DS_Store

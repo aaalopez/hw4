@@ -1,0 +1,21 @@
+.paw-trail {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 150;
+}
+
+.paw-trail__print {
+  position: fixed;
+  opacity: 0.5;
+  animation: paw-trail-fade 0.9s ease forwards;
+}
+
+@keyframes paw-trail-fade {
+  from {
+    opacity: 0.5;
+  }
+  to {
+    opacity: 0;
+  }
+}

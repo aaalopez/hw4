@@ -1,0 +1,32 @@
+import { Route, Routes } from 'react-router-dom'
+import AnnouncementBar from './components/AnnouncementBar'
+import NavBar from './components/NavBar'
+import ChatWidget from './components/ChatWidget'
+import PawTrail from './components/PawTrail'
+import Home from './pages/Home'
+import About from './pages/About'
+import Products from './pages/Products'
+import ProductDetail from './pages/ProductDetail'
+import Login from './pages/Login'
+import CreateAccount from './pages/CreateAccount'
+
+export default function App() {
+  return (
+    <div className="app-shell">
+      <AnnouncementBar />
+      <NavBar />
+      <main className="app-content">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/products" element={<Products />} />
+          <Route path="/products/:productId" element={<ProductDetail />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/create-account" element={<CreateAccount />} />
+        </Routes>
+      </main>
+      <ChatWidget />
+      <PawTrail />
+    </div>
+  )
+}

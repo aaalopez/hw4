@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Campus Customs — App Check (Problem 11)</title>
+<style>
+  :root {
+    --yale-blue: #00356b;
+    --yale-gold: #f1c400;
+    --ink: #1a1d23;
+    --cream: #faf6ec;
+    --light-gray: #f3f4f6;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    padding: 2.5rem 1.5rem 4rem;
+    background: var(--cream);
+    color: var(--ink);
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    line-height: 1.5;
+  }
+  .wrap { max-width: 860px; margin: 0 auto; }
+  h1 {
+    color: var(--yale-blue);
+    font-size: 1.8rem;
+    margin-bottom: 0.25rem;
+  }
+  .subtitle {
+    color: #555;
+    margin-top: 0;
+    margin-bottom: 2rem;
+  }
+  .check {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+    padding: 1.5rem 1.75rem 1.75rem;
+    margin-bottom: 2rem;
+  }
+  .check h2 {
+    color: var(--yale-blue);
+    font-size: 1.25rem;
+    margin-top: 0;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+  .check h2 .num {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.8rem;
+    height: 1.8rem;
+    border-radius: 50%;
+    background: var(--yale-blue);
+    color: #fff;
+    font-size: 1rem;
+    flex-shrink: 0;
+  }
+  .ground-truth {
+    background: var(--light-gray);
+    border-left: 4px solid var(--yale-gold);
+    padding: 0.6rem 0.9rem;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    margin: 0.75rem 0 1rem;
+  }
+  .ground-truth code {
+    background: rgba(0,0,0,0.06);
+    padding: 0.1rem 0.35rem;
+    border-radius: 4px;
+  }
+  .check img {
+    display: block;
+    width: 100%;
+    max-width: 640px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin: 0.75rem 0 1rem;
+  }
+  .caption {
+    font-size: 0.95rem;
+    color: #333;
+  }
+  .caption strong { color: var(--yale-blue); }
+  footer {
+    text-align: center;
+    color: #888;
+    font-size: 0.85rem;
+    margin-top: 2rem;
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Campus Customs — App Check</h1>
+  <p class="subtitle">Problem 11: three live checks against the running app (backend on :8000, frontend on :5173), each with a screenshot and what it proves.</p>
+
+  <div class="check">
+    <h2><span class="num">1</span>Chat checks real inventory (stock + price match the database)</h2>
+    <p>Asked the shop assistant for the Medium stock level and price of the <strong>Baseball Left Chest Crewneck</strong>. Before asking, the database was queried directly for ground truth:</p>
+    <div class="ground-truth">
+      <code>SELECT price FROM catalogue WHERE product_id = 'baseball-left-chest-crewneck'</code> → <strong>$58.00</strong><br/>
+      <code>SELECT quantity FROM inventory WHERE product_id = 'baseball-left-chest-crewneck' AND size = 'M'</code> → <strong>5</strong>
+    </div>
+    <img src="app_check_images/inventory.jpg" alt="Chat reply showing 5 Mediums in stock and a $58.00 price for the Baseball Left Chest Crewneck" />
+    <p class="caption">The assistant replied "<strong>There are 5 Mediums left, and the Baseball Left Chest Crewneck is $58.00</strong>" — an exact match to the database values above, confirming the agent's <code>check_size_stock</code> / <code>get_product</code> tools read live data rather than guessing.</p>
+  </div>
+
+  <div class="check">
+    <h2><span class="num">2</span>Dynamic search cards after a category question</h2>
+    <p>Asked the chat "<strong>What hoodies do you have?</strong>" — a category/browse question, not a request for one named product.</p>
+    <img src="app_check_images/category_search.jpg" alt="Products page showing 12 real hoodie product cards returned from a chat category question" />
+    <p class="caption">The chat's reply redirected the page to <strong>Products</strong> and rendered <strong>12 real product cards</strong> ("Showing 12 results for 'What hoodies do you have?'"), pulled live from the catalogue by the agent's <code>search_products</code> tool — proving the chat-to-page dynamic search contract (Problem 7) still works end-to-end.</p>
+  </div>
+
+  <div class="check">
+    <h2><span class="num">3</span>Problem 9 usability feature: sort + "in stock only" filter</h2>
+    <p>On the full Products page, set <strong>Sort by → Price: low to high</strong> and checked <strong>In stock only</strong>.</p>
+    <img src="app_check_images/usability_filter.jpg" alt="Products page Hoodies section sorted by price ascending with the in stock only filter checked" />
+    <p class="caption">The Hoodies section re-ordered to ascending price ($45 → $45 → $68 → ...) with both controls applied, confirming the Problem 9 front-end usability improvement (client-side sort and stock filter) works correctly on the live, category-organized catalogue.</p>
+  </div>
+
+  <footer>Campus Customs · Problem 11 app check</footer>
+</div>
+</body>
+</html>
