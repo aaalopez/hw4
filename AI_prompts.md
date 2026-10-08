@@ -8,9 +8,9 @@ This file logs the prompts used while working through HW 4. For each problem: th
 > for problem 2 look at the database data/campus_customs.db and understand the fields of each table. At a minimum understand catalogue, inventory, and users. start the file output/harness.md. write down each table and its fields and one short line on why each field matters for the shop or the chatbot. this harness will keep growing fyi ( models, tools, safety, specs)
 
 **Follow-up (if needed):**
->
+> N/A
 
-*What was lacking:*
+*What was lacking:* N/A
 
 ---
 
@@ -20,9 +20,9 @@ This file logs the prompts used while working through HW 4. For each problem: th
 > scaffold a react and vite and typscript front end for campus customs. put a nav bar at the top that links to the main pages: home, products, about us, log in, and create account. Pull Campus Customs style wording from yalebulldogblue.com for Home and About Us but write these pages in our voice. our voice is professional but chill and positive. don't copy the original site's text. on the products page show product images from the catalogue (use the image paths in the databsae) with basic product info (name, price, short description). make each product open a sinlge-item page (large image on one side, full product text on the other - description, price, sizes/stock when you have them). clicking a card on products should take the shopper there. add a chat interface in the bottom right of the site ( a floating chat panel is fine). It does not need to talk to an agent yet. a stub that will call the backend later is enough for now. you will need a small API soon to read the db. it's fine to use a FasAPI app for now in backend/main.py to serve products and images. we can grow it to an agent in prob 5.
 
 **Follow-up (if needed):**
->
+> N/A
 
-*What was lacking:*
+*What was lacking:* N/A
 
 ---
 
@@ -32,9 +32,9 @@ This file logs the prompts used while working through HW 4. For each problem: th
 > for problem 4 build a normal creat-account/login flow. create account will have first name, last name, email, password (confirm password too). log in will use email and password. new accounts go into the users table. make sure to store passwords securely so human or AI hackers cant access them. Use HASH for this. the seed database already has a test user we can use. Email: test@campuscustoms.yale.edu password: password. we will confirm that we can log in later and that i can create a brand new user next. update output/harness.md with how auth works (what we store for a user and how we protect passwords)
 
 **Follow-up (if needed):**
->
+> N/A
 
-*What was lacking:*
+*What was lacking:* N/A
 
 ---
 
@@ -44,9 +44,9 @@ This file logs the prompts used while working through HW 4. For each problem: th
 > build the shop chatbot as a pydanticai agent behind FastAPI plugged into your front-end chat widget. put the API app in backend/main.py this is the file to run with Uvicorn. keep the agent as these four files next to it: backend/prompts/prompt.md (system prompt), backend/agent.py (agent entry/wiring), backend/tools.py (tools the agent can call), backend/models.py (pydantic /pydantic AI structured types. in main.py expose a chat route so that a message from the website returns a reply from the agent (and whaterver else you need for products/auth). we will need our AI model API key for the agent. put the campus customs voice and safety basics into prompts/prompt.md (we'll expand tools and safety later). start or update types in models.py for chat replies/product cards as needed. in output/harness.md note how the front end talks to FastAPI and how the agent loads (prompt file + model). Make sure hte backend runs from the backend/ folder like this: uvicorn main:app --reload --port 8000
 
 **Follow-up (if needed):**
->
+> N/A
 
-*What was lacking:*
+*What was lacking:* N/A
 
 ---
 
@@ -56,9 +56,9 @@ This file logs the prompts used while working through HW 4. For each problem: th
 > give the agent tools that look up real information form campus_customs.db: product description, price, how many are in stock (by size when the customer asks). the agent needs to use the database and NEVER invent prices or quantities. if a size is out of stock say so. expand prompts/prompt.md so the agent knows to call these tools for price and stock qustions. add or update return types in models.py. in output/harness.md list each tool and explain which model fields you chose for lookup results and why
 
 **Follow-up (if needed):**
->
+> N/A
 
-*What was lacking:*
+*What was lacking:* N/A
 
 ---
 
@@ -68,9 +68,9 @@ This file logs the prompts used while working through HW 4. For each problem: th
 > now add a neat feature to the site. when a customer asks about a type of item like "what hoodies do u have?"the agent should search the catalgoue and the website should dynamically show those matching items as product cards (image, name, price, short info). this is an API contract: the agent returns structured product matches and then the front end renders them on the website. after the dynamic product cards are loaded by the new feature, make sure the same single item page behavior from problem 3 still works: each product card including the ones the chat just put on the page should still opne that detail view (large image and full info) when clicked. update prompts/prompt.md and output/harness.md so it is clear how search results reach the page. LET'S GO
 
 **Follow-up (if needed):**
->
+> N/A
 
-*What was lacking:*
+*What was lacking:* N/A
 
 ---
 
@@ -80,9 +80,9 @@ This file logs the prompts used while working through HW 4. For each problem: th
 > when a shopper is logged in save their chat history in the database in an appropriate table and reload it when they return. the agent should know who is chatting based on the login (name and email). put that in agent deps (or an equiv clear pattern) and/or tools the agent can call. also pass enough page context that if someone is on a product page and asks "do u have this in pink?" the agent know which item they mean. you can put code into agent context. guests can chat too but only logged in users have chat history. document in output/harness.md how user chat history is stored, what customer fields teh agent sees, and how page context is passed.
 
 **Follow-up (if needed):**
->
+> N/A
 
-*What was lacking:*
+*What was lacking:* N/A
 
 ---
 
@@ -92,9 +92,9 @@ This file logs the prompts used while working through HW 4. For each problem: th
 > Now that the core shop works we need to improve it. please suggest 2 front-end and 2 agent/backend improvements. you can use the chat-widget polish you proposed earlier (loading/error states, which turned into an auto-scroll-to-latest-message fix once you checked the code) as one of the improvements. Front end improvements are things that make the site look better and easier to use. agent/backend improvements are things that make the agent output better, more accurate, or safer. these could be new agent tools or things that make the agent run faster or cheaper. write output/usability.md before or as you build. for each improvement say what we added and why it helps campus customs shopper or the business. then double check all improvements actually show up in the running app.
 
 **Follow-up (if needed):**
->
+> N/A
 
-*What was lacking:*
+*What was lacking:* N/A
 
 ---
 
@@ -116,9 +116,9 @@ This file logs the prompts used while working through HW 4. For each problem: th
 > test the live site and document it in output/app_check.html (make sure i can double click it open). include screenshots and short captions about 1) chat checking the inventory level of an item (make sure the stock and price are true from the db) 2) the dynamic search results cards appearing after a category questions 3) one of the usability features from prob 9. make sure the html is easy to chefck and grade. it should have headings, screenshots, 1-2 sentences abotu what the screenshot proves. put the screenshot files in output/app_check_images/ and link them from app_check.html with relative paths (for example app_check_images/inventory.png)
 
 **Follow-up (if needed):**
->
+> N/A
 
-*What was lacking:*
+*What was lacking:* N/A
 
 ---
 
