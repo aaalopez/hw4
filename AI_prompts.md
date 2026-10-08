@@ -142,7 +142,7 @@ This file logs the prompts used while working through HW 4. For each problem: th
 ## Problem 13 — GitHub submission
 
 **Prompt:**
-> can you put our code in a folder called hw4 and push it to a public github repo? I'm going to need the repo URL later. Do not put the real .env, campus_customs.db, or product images in the github repo. use .gitignore. include .env.example with placeholders!
+>
 
 **Follow-up (if needed):**
 > make sure the folder is organized like this and includes AI_prompts.md, requirements.txt, .env.example, and everything else in the screenshot
