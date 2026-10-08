@@ -136,15 +136,3 @@ This file logs the prompts used while working through HW 4. For each problem: th
 > are there general safety rules we should follow that we didnt address
 
 *What was lacking:* still missing a couple of things beyond prompt wording — no cap on chat message length (a cost/abuse risk, not just a content one), and no rule for how the agent should handle a shopper being abusive toward *it* (only "don't produce" hateful content existed, not "how to respond to receiving it"), plus no rule against helping with resale/scalping/bulk-automated buying schemes. Added a `max_length` validator to `ChatRequest.message` (`backend/models.py`, mirrored as a frontend `maxLength` for UX) and two new prompt rules. Two other gaps were flagged but deliberately *not* code-fixed here, since fixing them properly is bigger than this problem's scope: (1) `/api/chat`/`/api/chat/history` still trust a client-supplied `user_id` with no real session/auth token — a known, already-documented gap since Problem 4, not something Problem 12's audit/safety work is meant to redo; (2) the audit trail logs a short excerpt of the shopper's own message by design (that's the point of an audit trail), which is a real but inherent privacy tradeoff rather than a bug — documented plainly in `harness.md` instead of papered over.
-
----
-
-## Problem 13 — GitHub submission
-
-**Prompt:**
->
-
-**Follow-up (if needed):**
-> make sure the folder is organized like this and includes AI_prompts.md, requirements.txt, .env.example, and everything else in the screenshot
-
-*What was lacking:* the initial prompt didn't specify the exact folder layout, so I fetched the actual Problem 13 assignment page for the real required structure (root-level `requirements.txt`, `README.md`, `AI_prompts.md`, and the rest) instead of guessing one.
